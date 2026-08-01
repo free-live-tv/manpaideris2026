@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Man: Brand New Day - Watch Full Movie HD</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0b0e14;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Container */
+        .main-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background-color: #0b0e14;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+        }
+
+        @media (min-width: 768px) {
+            .main-container {
+                max-width: 750px;
+                border: 1px solid #1f293d;
+                border-radius: 12px;
+                margin: 20px 0;
+                min-height: auto;
+            }
+        }
+
+        /* Top Header Section */
+        .header-section {
+            width: 100%;
+            background: #111827;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-bottom: 1px solid #1f293d;
+            z-index: 20;
+        }
+
+        .movie-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .movie-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        .imdb-badge {
+            background: #f5c518;
+            color: #000;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .live-status {
+            color: #22c55e;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #22c55e;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        /* Top Ad Container (320x50 Banner) */
+        .top-ad-container {
+            width: 100%;
+            background: #0f172a;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* Video / Thumbnail Player Section (Only this part gets blurred on click) */
+        .player-section {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .player-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: filter 0.3s ease;
+        }
+
+        /* Class to blur only the thumbnail image */
+        .player-section.blurred img {
+            filter: blur(8px) brightness(0.4);
+        }
+
+        /* Circular Play Button Overlay */
+        .round-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            width: 75px;
+            height: 75px;
+            background: rgba(220, 38, 38, 0.95);
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.8);
+            transition: transform 0.2s ease, opacity 0.3s ease;
+        }
+
+        .round-play-btn::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            border-left: 22px solid #ffffff;
+            margin-left: 4px;
+        }
+
+        .player-section:hover .round-play-btn {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Popup Box inside Thumbnail */
+        .thumbnail-popup {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .popup-content-box {
+            background: rgba(15, 23, 42, 0.95);
+            border: 2px solid #374151;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 320px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.9);
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-content-box p {
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .popup-content-box span {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .popup-btn {
+            display: block;
+            width: 100%;
+            background: #dc2626;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
+            transition: background 0.2s;
+        }
+
+        .popup-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Middle Ad Container (300x250 Square Ad - placed right under the thumbnail) */
+        .middle-ad-container {
+            width: 100%;
+            background: #0f172a;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* Movie Details Section */
+        .details-section {
+            padding: 15px;
+            background: #111827;
+            color: #d1d5db;
+            font-size: 14px;
+            line-height: 1.5;
+            border-top: 1px solid #1f293d;
+        }
+
+        .genres {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .genre-tag {
+            background: #1f293d;
+            color: #93c5fd;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            border: 1px solid #374151;
+        }
+
+        .plot-text {
+            color: #9ca3af;
+            margin-bottom: 12px;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        .crew-info p {
+            margin: 4px 0;
+            font-size: 13px;
+        }
+
+        .crew-info span {
+            color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Header: Movie Name & IMDb Details -->
+        <div class="header-section">
+            <div class="movie-title">Spider-Man: Brand New Day</div>
+            <div class="movie-meta-info">
+                <span>2026 • PG-13 • 2h 25m</span>
+                <span class="imdb-badge">IMDb 8.2</span>
+                <div class="live-status">
+                    <div class="pulse-dot"></div>
+                    <span>HD STREAMING</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Ad: 320x50 Banner -->
+        <div class="top-ad-container">
+            <script>
+                atOptions = {
+                    'key' : '61968ad00dac1138b98ac47a0eb36837',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://herbalraising.com/61968ad00dac1138b98ac47a0eb36837/invoke.js"></script>
+        </div>
+
+        <!-- Movie Thumbnail Section -->
+        <div class="player-section" id="playerSection" onclick="showThumbnailPopup()">
+            <img src="https://images7.alphacoders.com/139/thumb-1920-1399143.jpg" alt="Spider-Man Brand New Day Full Movie">
+            <div class="round-play-btn" id="playBtn"></div>
+            
+            <!-- Popup Box inside Thumbnail area -->
+            <div class="thumbnail-popup" id="thumbnailPopup">
+                <div class="popup-content-box" onclick="event.stopPropagation()">
+                    <p>To watch in <span>HD & 4K</span> for free, you just need to create a free account.</p>
+                    <a href="https://mghkpg.com/af?o=f39cce3be38cd2b198a11a56c982f6bd:b0cd6360446651d269ed122aa8d2b201&subid=naimparsonal" target="_blank" class="popup-btn">
+                        Create Account Free
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Ad: 300x250 Square Ad (Placed right under the thumbnail) -->
+        <div class="middle-ad-container">
+            <script>
+                atOptions = {
+                    'key' : '03dc0db3ab5ace31d668d536ed4196af',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://herbalraising.com/03dc0db3ab5ace31d668d536ed4196af/invoke.js"></script>
+        </div>
+
+        <!-- Movie Info & Crew Details Section -->
+        <div class="details-section">
+            <div class="genres">
+                <span class="genre-tag">Marvel</span>
+                <span class="genre-tag">Superhero</span>
+                <span class="genre-tag">Action</span>
+                <span class="genre-tag">Sci-Fi</span>
+            </div>
+            <div class="plot-text">
+                A forgotten Peter Parker lives alone as a full-time Spider-Man until mounting pressure triggers a dangerous change and a powerful new enemy emerges.
+            </div>
+            <div class="crew-info">
+                <p><span>Director:</span> Destin Daniel Cretton</p>
+                <p><span>Writers:</span> Chris McKenna, Erik Sommers, Stan Lee</p>
+                <p><span>Stars:</span> Tom Holland, Zendaya, Mark Ruffalo</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to blur only the thumbnail and display the popup box with CTA
+        function showThumbnailPopup() {
+            const player = document.getElementById('playerSection');
+            const playBtn = document.getElementById('playBtn');
+            const popup = document.getElementById('thumbnailPopup');
+
+            player.classList.add('blurred');
+            playBtn.style.opacity = '0';
+            playBtn.style.pointerEvents = 'none';
+            popup.style.display = 'flex';
+        }
+
+        // Disable right-click & inspection shortcuts
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J')) || (event.ctrlKey && event.key === 'U')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4867514,4,511,95,18,00000000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4867514&101" alt="free counter with statistics" border="0"></a></noscript>
+<!-- Histats.com  END  -->
